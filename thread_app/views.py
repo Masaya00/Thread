@@ -31,8 +31,6 @@ def thread_delete(request, thread_id):
         return redirect('top')
     
         
-
-
 def thread_detail(request, thread_id):
     thread = get_object_or_404(Thread, id=thread_id)
     if request.method == 'POST':
