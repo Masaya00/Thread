@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+  <title>スレッド詳細</title>
+{% endblock title %}
+
+{% block content %}
+<div>
+  <a href="{% url 'top' %}">一覧へ戻る</a>
+</div>
+{{ thread.thread_name }}
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.content }}
+  <button>作成</button>
+</form>
+
+{% for i in comment %}
+  <ul>
+    <li>{{ i.content }}</li>
+  </ul>
+{% endfor %}
+{% endblock %}
