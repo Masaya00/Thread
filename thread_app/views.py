@@ -4,6 +4,7 @@ from .models import Thread, Comment
 from .forms import ThreadForm, CommentForm
 
 def top(request):
+    """TOPページ"""
     if request.method == 'POST':
         form = ThreadForm(request.POST)
         if form.is_valid():
@@ -22,6 +23,7 @@ def top(request):
 
 
 def thread_delete(request, thread_id):
+    """スレッド削除"""
     try:
         thread = Thread.objects.get(id=thread_id)
         thread.del_flag = True
@@ -32,6 +34,7 @@ def thread_delete(request, thread_id):
     
         
 def thread_detail(request, thread_id):
+    """スレッド詳細ページ"""
     thread = get_object_or_404(Thread, id=thread_id)
     if request.method == 'POST':
         form = CommentForm(request.POST)
